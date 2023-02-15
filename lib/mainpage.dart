@@ -44,6 +44,22 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
+  int _selectedGridIndex = 0;
+
+  List<String> months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ];
 
   void onTapped(int index) {
     setState(() {
@@ -51,47 +67,59 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void onGridTapped(int index) {
+    setState(() {
+      _selectedGridIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-            BottomNavigationBarItem(icon: Icon(Icons.share), label: 'Share'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.notifications), label: 'Notifications'),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.lightBlue,
-          unselectedItemColor: Colors.grey,
-          onTap: onTapped,
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: GridView.count(
+          crossAxisCount: 3,
+          crossAxisSpacing: 8.0,
+          mainAxisSpacing: 8.0,
+          children: List.generate(6, (index) {
+            return InkWell(
+              onTap: () {
+                onGridTapped(index);
+              },
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.easeInOut,
+                decoration: BoxDecoration(
+                  color: index == _selectedGridIndex
+                      ? Colors.lightBlue
+                      : Colors.grey[300],
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                ),
+                child: Center(
+                  child: Text(months[index]),
+                ),
+              ),
+            );
+          }),
         ),
-        body: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [Container(
-           width: 100,
-            height: 200,
-            padding: const EdgeInsets.all(5.0),
-                       child: Image.asset('assets/images/terere.jpg'),
-          ),
-          
-          Container(
-            width: 100,
-            height: 200,
-            padding: const EdgeInsets.all(5.0),
-                       child: Image.asset('assets/images/terere.jpg'),
-          ),
-          Container(
-             width: 100,
-            height: 200,
-            padding: const EdgeInsets.all(5.0),
-                       child: Image.asset('assets/images/terere.jpg'),
-          ),
-        
-      
-        ],));
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+          BottomNavigationBarItem(icon: Icon(Icons.share), label: 'Share'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.notifications), label: 'Notification'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings), label: 'Settings'),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.lightBlue,
+        unselectedItemColor: Colors.grey,
+        type: BottomNavigationBarType.fixed,
+        onTap: onTapped,
+      ),
+    );
   }
 }
