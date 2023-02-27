@@ -104,7 +104,7 @@ class _MyPrintHomePageState extends State<MyPrintHomePage> {
         pageFormat: PdfPageFormat.a4,
         build: (pw.Context context) {
           return pw.Center(
-            child: pw.Text('Hello eclectify Enthusiast'),
+            child: pw.Text('Hello world'),
           ); // Center
         },
       ),
@@ -133,7 +133,7 @@ class _MyPrintHomePageState extends State<MyPrintHomePage> {
         build: (pw.Context context) {
           return pw.Center(
             child: pw.Text(
-              'Hello eclectify Enthusiast',
+              'Hello world',
               style: pw.TextStyle(fontSize: 30),
             ),
           );
