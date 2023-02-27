@@ -1,3 +1,6 @@
+//import 'dart:js';
+
+import 'package:cfmkids/Print.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends MaterialPageRoute<void> {
@@ -8,9 +11,9 @@ class MainPage extends MaterialPageRoute<void> {
               title: const Text('Main Page'),
               actions: <Widget>[
                 PopupMenuButton<String>(
-                  onSelected: handleClick,
+                  onSelected: (value) => onSelected(context, value),
                   itemBuilder: (BuildContext context) {
-                    return {'Logout', 'Settings'}.map((String choice) {
+                    return {'Logout', 'Settings', 'Print'}.map((String choice) {
                       return PopupMenuItem<String>(
                         value: choice,
                         child: Text(choice),
@@ -25,11 +28,16 @@ class MainPage extends MaterialPageRoute<void> {
         });
 }
 
-void handleClick(String value) {
+void onSelected(BuildContext context, String value) {
   switch (value) {
     case 'Logout':
       break;
     case 'Settings':
+      break;
+    case 'Print':
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => Print()),
+      );
       break;
   }
 }
@@ -103,6 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           }),
         ),
+<<<<<<< Updated upstream
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -121,5 +130,31 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: onTapped,
       ),
     );
+=======
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Container(
+              width: 100,
+              height: 200,
+              padding: const EdgeInsets.all(5.0),
+              child: Image.asset('assets/images/terere.jpg'),
+            ),
+            Container(
+              width: 100,
+              height: 200,
+              padding: const EdgeInsets.all(5.0),
+              child: Image.asset('assets/images/terere.jpg'),
+            ),
+            Container(
+              width: 100,
+              height: 200,
+              padding: const EdgeInsets.all(5.0),
+              child: Image.asset('assets/images/terere.jpg'),
+            ),
+          ],
+        ));
+>>>>>>> Stashed changes
   }
 }

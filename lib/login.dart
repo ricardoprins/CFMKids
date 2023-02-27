@@ -76,7 +76,7 @@ class LoginPage extends StatelessWidget {
                                 minWidth: double.infinity,
                                 height: 60,
                                 onPressed: () {
-                                    Navigator.push(context, MainPage());   
+                                  Navigator.push(context, MainPage());
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
                                       content: Text("Login Button Pressed"),
