@@ -23,8 +23,7 @@ class MainPage extends MaterialPageRoute<void> {
                       );
                     }).toList();
                   },
-                  offset: const Offset(
-                      0, 40), // Mueve el menú 40 pixeles hacia arriba
+                  offset: const Offset(0, 40),
                 ),
               ],
             ),
