@@ -12,7 +12,7 @@ class MainPage extends MaterialPageRoute<void> {
                 PopupMenuButton<String>(
                   onSelected: handleClick,
                   itemBuilder: (BuildContext context) {
-                    return {'Logout', 'Settings'}.map((String choice) {
+                    return {'Logout', 'Settings', 'Print'}.map((String choice) {
                       return PopupMenuItem<String>(
                         value: choice,
                         child: Text(choice),
@@ -32,6 +32,8 @@ void handleClick(String value) {
     case 'Logout':
       break;
     case 'Settings':
+      break;
+    case 'Print':
       break;
   }
 }
