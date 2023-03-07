@@ -25,31 +25,6 @@ class Print extends StatelessWidget {
   }
 }
 
-class PrintH extends MaterialPageRoute<void> {
-  PrintH()
-      : super(builder: (BuildContext context) {
-          return Scaffold(
-            appBar: AppBar(
-              title: const Text('Print'),
-              actions: <Widget>[
-                PopupMenuButton<String>(
-                  onSelected: (value) => onSelected(context, value),
-                  itemBuilder: (BuildContext context) {
-                    return {'Logout', 'Settings', 'Print'}.map((String choice) {
-                      return PopupMenuItem<String>(
-                        value: choice,
-                        child: Text(choice),
-                      );
-                    }).toList();
-                  },
-                ),
-              ],
-            ),
-            body: const HomeScreen(),
-          );
-        });
-}
-
 class MyPrintHomePage extends StatefulWidget {
   const MyPrintHomePage({Key? key}) : super(key: key);
 
