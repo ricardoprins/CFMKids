@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:cfmkids/signup.dart';
 import 'package:cfmkids/settings.dart';
 
+import 'Print.dart';
+
 class MainPage extends MaterialPageRoute<void> {
   final BuildContext mainContext;
   MainPage(this.mainContext)
@@ -16,7 +18,7 @@ class MainPage extends MaterialPageRoute<void> {
                   icon: Icon(Icons.more_vert),
                   onSelected: (value) => handleClick(value, mainContext),
                   itemBuilder: (BuildContext context) {
-                    return {'Logout', 'Settings'}.map((String choice) {
+                    return {'Logout', 'Settings', 'Print'}.map((String choice) {
                       return PopupMenuItem<String>(
                         value: choice,
                         child: Text(choice),
@@ -40,6 +42,8 @@ void handleClick(String value, BuildContext mainContext) {
       break;
     case 'Settings':
       Navigator.push(mainContext, MainPage(mainContext));
+      break;
+    case 'Print':
       break;
   }
 }
